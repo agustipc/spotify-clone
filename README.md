@@ -1,6 +1,13 @@
 # Spotify clone with Astro
 
-## 🧞 Commands
+This is a Spotify clone built with Astro, Tailwind CSS, React and Svelte.
+I'm trying to create a App that looks like a SPA using view transitions.
+
+For the data I'm using a Mock
+
+Vercel -> https://vercel.com/templates/astro/view-transitions
+
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -12,7 +19,3 @@ All commands are run from the root of the project, from a terminal:
 | `bun run preview`         | Preview your build locally, before deploying     |
 | `bun run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `bun run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
