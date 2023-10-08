@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { usePlayerStore } from '../store/playerStore'
+import { Slider } from './Slider'
 
 export const PlayIcon = () => (
   <svg role="img" height="16" width="16" aria-hidden="true" viewBox="0 0 16 16">
@@ -57,8 +58,30 @@ const CurrentSong = ({ image, title, artists }) => {
   )
 }
 
+const VolumeControl = () => {
+  const volume = usePlayerStore((state) => state.volume)
+  const setVolume = usePlayerStore((state) => state.setVolume)
+
+  return (
+    <div className="flex justify-center gap-x-2">
+      {volume < 0.1 ? <VolumeSilence /> : <Volume />}
+      <Slider
+        defaultValue={[100]}
+        max={100}
+        min={0}
+        className="w-[95px]"
+        onValueChange={(value) => {
+          const [newVolume] = value
+          const volumeValue = newVolume / 100
+          setVolume(volumeValue)
+        }}
+      />
+    </div>
+  )
+}
+
 export function Player() {
-  const { currentMusic, isPlaying, setIsPlaying } = usePlayerStore(
+  const { currentMusic, isPlaying, setIsPlaying, volume } = usePlayerStore(
     (state) => state
   )
   const audioRef = useRef()
@@ -74,9 +97,14 @@ export function Player() {
     if (song) {
       const src = `/music/${playlist?.id}/0${song?.id}.mp3`
       audioRef.current.src = src
+      audioRef.current.volume = volume
       audioRef.current.play()
     }
   }, [currentMusic])
+
+  useEffect(() => {
+    audioRef.current.volume = volume
+  }, [volume])
 
   const handleClick = () => {
     setIsPlaying(!isPlaying)
@@ -95,7 +123,9 @@ export function Player() {
           <audio ref={audioRef} />
         </div>
       </div>
-      <div className="grid place-content-center">Volume</div>
+      <div className="grid place-content-center">
+        <VolumeControl />
+      </div>
     </div>
   )
 }
