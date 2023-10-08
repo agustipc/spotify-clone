@@ -46,7 +46,7 @@ export const Volume = () => (
 
 const CurrentSong = ({ image, title, artists }) => {
   return (
-    <div className="flex items-center gap-5 relative overflow-hidden">
+    <div className="flex items-center gap-5 relative overflow-hidden w-[150px]">
       <picture className="w-16 h-16 bg-zinc-800 rounded-md shadow-lg overflow-hidden">
         <img src={image} alt={title} />
       </picture>
@@ -54,6 +54,55 @@ const CurrentSong = ({ image, title, artists }) => {
         <h3 className="font-semiBold text-sm block">{title}</h3>
         <span className="text-xs opacity-80">{artists?.join(', ')}</span>
       </div>
+    </div>
+  )
+}
+
+const SongControl = ({ audio }) => {
+  const [currentTime, setCurrentTime] = useState(0)
+
+  useEffect(() => {
+    audio.current.addEventListener('timeupdate', handleTimeUpdate)
+
+    return () => {
+      audio.current.removeEventListener('timeupdate', handleTimeUpdate)
+    }
+  }, [])
+
+  const handleTimeUpdate = () => {
+    setCurrentTime(audio.current?.currentTime)
+  }
+
+  const formatTime = (time) => {
+    if (time === null) return '00:00'
+
+    const seconds = Math.floor(time % 60)
+    const minutes = Math.floor(time / 60)
+
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`
+  }
+
+  const duration = audio?.current?.duration ?? 0
+
+  return (
+    <div className="flex flex-row text-xs gap-x-3 pt-2">
+      <span className="opacity-50 w-10 text-right">
+        {formatTime(currentTime)}
+      </span>
+      <Slider
+        defaultValue={[0]}
+        value={[currentTime]}
+        max={duration}
+        min={0}
+        className="w-[350px]"
+        onValueChange={(value) => {
+          const [newTime] = value
+          audio.current.currentTime = newTime
+        }}
+      />
+      <span className="opacity-50 w-10">
+        {duration ? formatTime(duration) : null}
+      </span>
     </div>
   )
 }
@@ -74,7 +123,7 @@ const VolumeControl = () => {
   }
 
   return (
-    <div className="flex justify-center gap-x-2">
+    <div className="flex flex-row gap-x-2 w-[150px] justify-end">
       <button
         className="opacity-70 hover:opacity-100 transition"
         onClick={handleClickVolume}
@@ -109,7 +158,6 @@ export function Player() {
   }, [isPlaying])
 
   useEffect(() => {
-    console.log({ currentMusic })
     // audioRef.current.src = `/music/1/01.mp3`
     const { song, playlist, songs } = currentMusic
     if (song) {
@@ -134,10 +182,11 @@ export function Player() {
         <CurrentSong {...currentMusic.song} />
       </h1>
       <div className="grid place-content-center gap-4 flex-1">
-        <div className="flex justify-center">
+        <div className="flex justify-center flex-col items-center pt-2">
           <button onClick={handleClick} className="bg-white rounded-full p-3 ">
             {isPlaying ? <PauseIcon /> : <PlayIcon />}
           </button>
+          <SongControl audio={audioRef} />
           <audio ref={audioRef} />
         </div>
       </div>
