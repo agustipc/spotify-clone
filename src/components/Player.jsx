@@ -46,7 +46,7 @@ export const Volume = () => (
 
 const CurrentSong = ({ image, title, artists }) => {
   return (
-    <div className="flex items-center gap-5 relative overflow-hidden w-[150px]">
+    <div className="flex items-center gap-5 relative overflow-hidden w-[250px]">
       <picture className="w-16 h-16 bg-zinc-800 rounded-md shadow-lg overflow-hidden">
         <img src={image} alt={title} />
       </picture>
@@ -101,7 +101,7 @@ const SongControl = ({ audio }) => {
         }}
       />
       <span className="opacity-50 w-10">
-        {duration ? formatTime(duration) : null}
+        {duration ? formatTime(duration) : '0:00'}
       </span>
     </div>
   )
@@ -123,7 +123,7 @@ const VolumeControl = () => {
   }
 
   return (
-    <div className="flex flex-row gap-x-2 w-[150px] justify-end">
+    <div className="flex flex-row gap-x-2 w-[250px] justify-end">
       <button
         className="opacity-70 hover:opacity-100 transition"
         onClick={handleClickVolume}
