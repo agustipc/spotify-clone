@@ -14,7 +14,7 @@ export const playlists: Playlist[] = [
     id: '1',
     albumId: 1,
     title: 'For All The Dogs',
-    color: colors.black,
+    color: colors.gray,
     cover:
       'https://media.pitchfork.com/photos/6505c8ca90b65beacc778d9d/1:1/w_320,c_limit/Drake-For-all-the-Dogs.jpg',
     artists: ['Drake', 'Teezo Touchdown', '21 Savage']
@@ -178,7 +178,7 @@ export const songs: Song[] = [
     title: 'Stuck',
     image: `https://upload.wikimedia.org/wikipedia/en/8/8e/Thirty_Seconds_to_Mars_-_It%27s_the_End_of_the_World_but_It%27s_a_Beautiful_Day.png`,
     artists: ['Thirty Seconds to Mars'],
-    album: 'Its The End Of The World But Its A Beautiful Dayn',
+    album: 'Its The End Of The World But Its A Beautiful Day',
     duration: '3:03'
   },
   {
@@ -187,7 +187,7 @@ export const songs: Song[] = [
     title: 'Life Is Beautiful',
     image: `https://upload.wikimedia.org/wikipedia/en/8/8e/Thirty_Seconds_to_Mars_-_It%27s_the_End_of_the_World_but_It%27s_a_Beautiful_Day.png`,
     artists: ['Thirty Seconds to Mars'],
-    album: 'Its The End Of The World But Its A Beautiful Dayn',
+    album: 'Its The End Of The World But Its A Beautiful Day',
     duration: '3:19'
   },
   {
@@ -196,7 +196,7 @@ export const songs: Song[] = [
     title: 'Seasons',
     image: `https://upload.wikimedia.org/wikipedia/en/8/8e/Thirty_Seconds_to_Mars_-_It%27s_the_End_of_the_World_but_It%27s_a_Beautiful_Day.png`,
     artists: ['Thirty Seconds to Mars'],
-    album: 'Its The End Of The World But Its A Beautiful Dayn',
+    album: 'Its The End Of The World But Its A Beautiful Day',
     duration: '2:46'
   },
   {
@@ -205,7 +205,7 @@ export const songs: Song[] = [
     title: 'Get Up Kid',
     image: `https://upload.wikimedia.org/wikipedia/en/8/8e/Thirty_Seconds_to_Mars_-_It%27s_the_End_of_the_World_but_It%27s_a_Beautiful_Day.png`,
     artists: ['Thirty Seconds to Mars'],
-    album: 'Its The End Of The World But Its A Beautiful Dayn',
+    album: 'Its The End Of The World But Its A Beautiful Day',
     duration: '2:58'
   },
   {
@@ -214,7 +214,7 @@ export const songs: Song[] = [
     title: 'Love These Days',
     image: `https://upload.wikimedia.org/wikipedia/en/8/8e/Thirty_Seconds_to_Mars_-_It%27s_the_End_of_the_World_but_It%27s_a_Beautiful_Day.png`,
     artists: ['Thirty Seconds to Mars'],
-    album: 'Its The End Of The World But Its A Beautiful Dayn',
+    album: 'Its The End Of The World But Its A Beautiful Day',
     duration: '3:01'
   },
   {
